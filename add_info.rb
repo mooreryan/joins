@@ -36,15 +36,15 @@ opts = Trollop.options do
 end
 
 if opts[:main_file].nil?
-  Trollop.die name, "You didn't provide an input file!"
+  Trollop.die :main_file, "You didn't provide an input file!"
 elsif !File.exists?(opts[:main_file])
-  Trollop.die name, "#{opts[:main_file]} doesn't exist!"
+  Trollop.die :main_file, "#{opts[:main_file]} doesn't exist!"
 end
 
 if opts[:info_file].nil?
-  Trollop.die name, "You didn't provide an input file!"
+  Trollop.die :info_file, "You didn't provide an input file!"
 elsif !File.exists?(opts[:info_file])
-  Trollop.die name, "#{opts[:info_file]} doesn't exist!"
+  Trollop.die :info_file, "#{opts[:info_file]} doesn't exist!"
 end
 
 info_header = {}
@@ -72,7 +72,7 @@ File.open(opts[:main_file]).each_line.with_index do |line, idx|
     if info_header.has_key? key
       puts [line.chomp, info_header[key]].join opts[:delimiter]
     else
-      abort "Error: keys don't match"
+      abort "Error: the header line for the keys don't match"
     end
   else
 
