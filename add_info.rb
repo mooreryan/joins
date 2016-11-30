@@ -49,7 +49,7 @@ end
 
 info_header = {}
 info_file = Hash.new opts[:default_value]
-File.open(opts[:info_file]).each_line.with_index do |line, idx|
+File.open(opts[:info_file], "rt").each_line.with_index do |line, idx|
   key, *rest = line.chomp.split opts[:delimiter]
 
   if idx.zero?
@@ -63,7 +63,7 @@ File.open(opts[:info_file]).each_line.with_index do |line, idx|
   end
 end
 
-File.open(opts[:main_file]).each_line.with_index do |line, idx|
+File.open(opts[:main_file], "rt").each_line.with_index do |line, idx|
   arr = line.chomp.split opts[:delimiter]
   ncols = arr.count
   key = arr[opts[:key_main_file]]

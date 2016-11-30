@@ -31,7 +31,7 @@ num_infiles = ARGV.count
 ARGV.each do |fname|
   header = {}
   lines = {}
-  File.open(fname).each_line.with_index do |line, idx|
+  File.open(fname, "rt").each_line.with_index do |line, idx|
     key, *rest = line.chomp.split opts[:delimiter]
 
     if idx.zero?
