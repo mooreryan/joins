@@ -56,7 +56,7 @@ File.open(opts[:info_file], "rt").each_line.with_index do |line, idx|
     info_header[key] = rest
   else
     if info_file.has_key? key
-      abort "key: |#{key}| is repeated in #{fname}"
+      abort "key: |#{key}| is repeated in #{opts[:info_file]}"
     end
 
     info_file[key] = rest
@@ -72,6 +72,8 @@ File.open(opts[:main_file], "rt").each_line.with_index do |line, idx|
     if info_header.has_key? key
       puts [line.chomp, info_header[key]].join opts[:delimiter]
     else
+      p info_file
+      p key
       abort "Error: the header line for the keys don't match"
     end
   else

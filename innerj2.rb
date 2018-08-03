@@ -12,8 +12,8 @@ opts = Trollop.options do
 
   Do an inner join on the first column of the input files.
 
-  Every file should have a header line. The first column's header
-  should be exactly the same in each file.
+  This one is different from innerj.rb as it will pretend like there
+  are no header lines, even if there are header lines.
 
   Example:
     ruby innerj.rb file1.txt file2.txt file3.txt > joined_file.txt
